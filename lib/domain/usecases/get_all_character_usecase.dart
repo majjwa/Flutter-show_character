@@ -6,7 +6,7 @@ class GetAllCharacterUseCases {
   final BaseAllCharacterRepo baseAllCharacterRepo;
 GetAllCharacterUseCases(this.baseAllCharacterRepo);
 
-  Future<List<Character>> GetAllCharacterUseCase() async{
+  Future<List<Character>> call() async{
   return await baseAllCharacterRepo.GetAllCharacter();
 
 

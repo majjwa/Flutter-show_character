@@ -8,4 +8,5 @@ class Location extends Equatable {
 
   @override
   List<Object?> get props => [name, locationUrl];
+
 }

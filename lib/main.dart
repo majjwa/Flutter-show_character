@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:show_character_app/data/remote_data_source/character_remote_data_source.dart';
+import 'package:show_character_app/data/repository/all_character_repo.dart';
+import 'package:show_character_app/domain/repository/base_all_character_repo.dart';
 
-void main() {
+void main() async{
+BaseCharacterRemoteDataSource baseCharacterRemoteDataSource =CharacterRemoteDataSource();
+BaseAllCharacterRepo baseAllCharacterRepo = AllCharacterRepo(baseCharacterRemoteDataSource);
+await baseAllCharacterRepo.GetAllCharacter();
+
   runApp(const MyApp());
 }
 
