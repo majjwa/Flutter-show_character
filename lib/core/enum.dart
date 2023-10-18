@@ -1,5 +1,5 @@
 enum CharacterState {
-  loding,
+  loading,
   loaded,
   error,
 }

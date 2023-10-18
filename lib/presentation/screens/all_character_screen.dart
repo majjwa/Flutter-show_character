@@ -9,12 +9,11 @@ import '../component/character_list.dart';
 class AllCharacterScreen extends StatelessWidget {
   const AllCharacterScreen({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context){
-        return AllCharacterBloc(sl())..add(GetAllCharacterEvent());
+      create: (BuildContext context) {
+        return AllCharacterBloc(sl())..add(GetAllCharactersEvent());
       },
       child: Scaffold(
         body: SafeArea(
@@ -71,6 +70,7 @@ class AllCharacterScreen extends StatelessWidget {
                       height: 6,
                       color: Colors.purple.shade800,
                     )),
+                const SizedBox(height: 100,),
                 const CharacterList(),
               ],
             ),
