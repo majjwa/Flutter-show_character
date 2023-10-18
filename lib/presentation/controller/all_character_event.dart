@@ -4,7 +4,7 @@ abstract class AllCharacterEvent extends Equatable {
   const AllCharacterEvent();
   @override
 
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }
 
 class GetAllCharacterEvent extends AllCharacterEvent{}
