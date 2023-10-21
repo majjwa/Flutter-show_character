@@ -7,9 +7,10 @@ import 'package:show_character_app/presentation/screens/all_character_screen.dar
 import 'core/service_locator.dart';
 
 void main() async {
-// BaseCharacterRemoteDataSource baseCharacterRemoteDataSource =CharacterRemoteDataSource();
-// BaseAllCharacterRepo baseAllCharacterRepo = AllCharacterRepo(baseCharacterRemoteDataSource);
-// await baseAllCharacterRepo.GetAllCharacter();
+BaseCharacterRemoteDataSource baseCharacterRemoteDataSource =CharacterRemoteDataSource();
+BaseAllCharacterRepo baseAllCharacterRepo = AllCharacterRepo(baseCharacterRemoteDataSource);
+ await baseAllCharacterRepo.getAllCharacterDetails(1);
+
   WidgetsFlutterBinding.ensureInitialized();
   ServiceLocator().init();
   runApp(const MyApp());

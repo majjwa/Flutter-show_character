@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:show_character_app/data/model/all_character_model.dart';
+import 'package:show_character_app/data/model/character_details_model.dart';
 import '../../core/app_constant.dart';
 
 abstract class BaseCharacterRemoteDataSource {
   Future<List<AllCharacterModel>> getAllCharacter();
+  Future<List<CharacterDetailsModel>> getCharacterDetails(int id);
 }
 
 class CharacterRemoteDataSource extends BaseCharacterRemoteDataSource {
@@ -17,4 +19,17 @@ class CharacterRemoteDataSource extends BaseCharacterRemoteDataSource {
       throw Exception();
     }
   }
+
+  @override
+  Future<List<CharacterDetailsModel>> getCharacterDetails(int id) async {
+    final response = await Dio().get(AppConstant.characterDetail(id));
+    if (response.statusCode == 200) {
+      return
+        List<CharacterDetailsModel>.from((response.data["results"] as List)
+          .map((e) => CharacterDetailsModel.fromJson(e)));
+    } else {
+      throw Exception();
+    }
+  }
 }
+

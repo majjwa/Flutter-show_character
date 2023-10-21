@@ -19,11 +19,11 @@ class AllCharacterBloc extends Bloc<AllCharacterEvent, AllCharacterState> {
   FutureOr<void> _getAllCharacter(
       GetAllCharactersEvent event, Emitter<AllCharacterState> emit) async {
     final result = await getAllCharacterUseCases();
-   emit(state.copyWith(
-     character: result,
-       state: CharacterState.loaded
+    emit(state.copyWith(
+        character: result,
+        state: CharacterState.loaded
 
-   ));
+    ));
 
   }
 

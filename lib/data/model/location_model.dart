@@ -8,10 +8,7 @@ class LocationModel extends Location {
   factory LocationModel.fromMap(Map<String, dynamic> json) =>
       LocationModel(
           name: json["name"],
-          locationUrl: json["url"]);
+          locationUrl: json["url"],
+      );
 
-  Map<String, dynamic> toMap() => {
-    'name': name,
-    'url': locationUrl,
-  };
 }
