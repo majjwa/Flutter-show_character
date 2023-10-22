@@ -4,7 +4,8 @@ import 'package:show_character_app/domain/repository/base_all_character_repo.dar
 class GetCharacterDetailsUseCase{
    BaseAllCharacterRepo baseAllCharacterRepo ;
    GetCharacterDetailsUseCase(this.baseAllCharacterRepo);
-   Future<List<CharacterDetails>> call(int id)async{
-     return await baseAllCharacterRepo.getAllCharacterDetails(id);
+
+   Future<CharacterDetails> call(int characterId)async{
+     return await baseAllCharacterRepo.getAllCharacterDetails(characterId);
    }
  }

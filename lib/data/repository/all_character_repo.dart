@@ -5,19 +5,17 @@ import 'package:show_character_app/domain/repository/base_all_character_repo.dar
 
 class AllCharacterRepo extends BaseAllCharacterRepo {
   final BaseCharacterRemoteDataSource baseCharacterRemoteDataSource;
-
   AllCharacterRepo(this.baseCharacterRemoteDataSource);
 
   @override
   Future<List<Character>> getAllCharacter() async {
     final result = await baseCharacterRemoteDataSource.getAllCharacter();
-
     return result;
   }
 
   @override
-  Future<List<CharacterDetails>> getAllCharacterDetails(int id) async {
-    final result = await baseCharacterRemoteDataSource.getCharacterDetails(id);
+  Future<CharacterDetails> getAllCharacterDetails(int charcterId) async {
+    final result = await baseCharacterRemoteDataSource.getCharacterDetails(charcterId);
     print(result);
     return result;
   }

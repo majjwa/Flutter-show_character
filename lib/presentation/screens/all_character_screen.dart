@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:show_character_app/presentation/component/theme_icon.dart';
 import 'package:show_character_app/presentation/controller/all_character_bloc.dart';
-
 import '../../core/service_locator.dart';
 import '../component/character_list.dart';
 
@@ -28,11 +28,9 @@ class AllCharacterScreen extends StatelessWidget {
                       "Rick & Morty",
                       style: GoogleFonts.aclonica(
                           textStyle: const TextStyle(fontSize: 35),
-                          color: Colors.white),
+                          color: Theme.of(context).colorScheme.secondary),
                     ),
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.light_mode_rounded)),
+                   ThemeIcon(),
                   ],
                 ),
                 const SizedBox(
@@ -43,20 +41,24 @@ class AllCharacterScreen extends StatelessWidget {
                   height: 40,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Colors.purple.shade800,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
-                  child: const Row(
+                  child: Row(
                     children: [
                       SizedBox(
                         width: 7,
                       ),
-                      Icon(Icons.person),
+                      Icon(
+                        Icons.person,
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
                       SizedBox(
                         width: 10,
                       ),
                       Text(
                         "All Characters",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.secondary),
                       ),
                     ],
                   ),
@@ -68,9 +70,11 @@ class AllCharacterScreen extends StatelessWidget {
                     width: 310,
                     child: Divider(
                       height: 6,
-                      color: Colors.purple.shade800,
+                      color: Theme.of(context).colorScheme.primary,
                     )),
-                const SizedBox(height: 100,),
+                const SizedBox(
+                  height: 100,
+                ),
                 const CharacterList(),
               ],
             ),

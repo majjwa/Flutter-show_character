@@ -11,17 +11,17 @@ part 'character_details_state.dart';
 
 class CharacterDetailsBloc
     extends Bloc<CharacterDetailsEvent, CharacterDetailsState> {
-  final GetCharacterDetailsUseCase getCharacterDetailsUseCase;
   CharacterDetailsBloc(this.getCharacterDetailsUseCase)
       : super(const CharacterDetailsState()) {
     on<GetCharacterDetailsEvent>(_getCharacterDetails);
   }
+  final GetCharacterDetailsUseCase getCharacterDetailsUseCase;
 
   FutureOr<void> _getCharacterDetails(GetCharacterDetailsEvent event,
       Emitter<CharacterDetailsState> emit) async {
-    final result = await getCharacterDetailsUseCase(event.id);
+    final result = await getCharacterDetailsUseCase(event.characterId);
     emit(state.copyWith(
-      characterDetails: result,
+      characterDetail: result,
       state: CharacterState.loaded,
     ));
   }

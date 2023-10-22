@@ -6,9 +6,9 @@ abstract class CharacterDetailsEvent extends Equatable {
 }
 
 class GetCharacterDetailsEvent extends CharacterDetailsEvent {
-  final int id;
-  const GetCharacterDetailsEvent(this.id);
+  final int characterId;
+  const GetCharacterDetailsEvent(this.characterId);
 
   @override
-  List<Object?> get props => [id];
+  List<Object?> get props => [characterId];
 }

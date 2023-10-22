@@ -6,6 +6,6 @@ abstract class BaseAllCharacterRepo {
 
   Future<List<Character>>getAllCharacter();
 
-  Future<List<CharacterDetails>>getAllCharacterDetails(int id);
+  Future<CharacterDetails>getAllCharacterDetails(int characterId);
 
 }

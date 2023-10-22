@@ -5,7 +5,7 @@ import '../../core/app_constant.dart';
 
 abstract class BaseCharacterRemoteDataSource {
   Future<List<AllCharacterModel>> getAllCharacter();
-  Future<List<CharacterDetailsModel>> getCharacterDetails(int id);
+  Future<CharacterDetailsModel> getCharacterDetails(int characterId);
 }
 
 class CharacterRemoteDataSource extends BaseCharacterRemoteDataSource {
@@ -21,12 +21,10 @@ class CharacterRemoteDataSource extends BaseCharacterRemoteDataSource {
   }
 
   @override
-  Future<List<CharacterDetailsModel>> getCharacterDetails(int id) async {
-    final response = await Dio().get(AppConstant.characterDetail(id));
+  Future<CharacterDetailsModel> getCharacterDetails(int characterId) async {
+    final response = await Dio().get(AppConstant.characterDetail(characterId));
     if (response.statusCode == 200) {
-      return
-        List<CharacterDetailsModel>.from((response.data["results"] as List)
-          .map((e) => CharacterDetailsModel.fromJson(e)));
+      return CharacterDetailsModel.fromJson(response.data);
     } else {
       throw Exception();
     }

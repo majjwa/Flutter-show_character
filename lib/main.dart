@@ -3,14 +3,12 @@ import 'package:show_character_app/data/remote_data_source/character_remote_data
 import 'package:show_character_app/data/repository/all_character_repo.dart';
 import 'package:show_character_app/domain/repository/base_all_character_repo.dart';
 import 'package:show_character_app/presentation/screens/all_character_screen.dart';
+import 'package:show_character_app/theme/dark_theme.dart';
+import 'package:show_character_app/theme/light_theme.dart';
 
 import 'core/service_locator.dart';
 
 void main() async {
-BaseCharacterRemoteDataSource baseCharacterRemoteDataSource =CharacterRemoteDataSource();
-BaseAllCharacterRepo baseAllCharacterRepo = AllCharacterRepo(baseCharacterRemoteDataSource);
- await baseAllCharacterRepo.getAllCharacterDetails(1);
-
   WidgetsFlutterBinding.ensureInitialized();
   ServiceLocator().init();
   runApp(const MyApp());
@@ -23,14 +21,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData.dark().copyWith(
-      scaffoldBackgroundColor: Colors.black38,
-        useMaterial3: true,
-      ),
-      home:
-       const AllCharacterScreen(),
+      theme:darkTheme,
+      home: const AllCharacterScreen(),
     );
   }
+
+
 }
-
-

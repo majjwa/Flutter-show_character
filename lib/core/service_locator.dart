@@ -6,6 +6,7 @@ import 'package:show_character_app/domain/usecases/get_all_character_usecase.dar
 import 'package:show_character_app/domain/usecases/get_character_details_usecase.dart';
 import 'package:show_character_app/presentation/controller/all_character_bloc.dart';
 import 'package:show_character_app/presentation/controller/character_details_bloc.dart';
+import 'package:show_character_app/theme/controller/theme_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -13,6 +14,7 @@ class ServiceLocator {
   void init() {
     sl.registerFactory(() => AllCharacterBloc(sl()));
     sl.registerFactory(() => CharacterDetailsBloc(sl()));
+    sl.registerFactory(() => ThemeBloc());
     sl.registerLazySingleton<BaseCharacterRemoteDataSource>(
         () => CharacterRemoteDataSource());
     sl.registerLazySingleton<BaseAllCharacterRepo>(

@@ -12,8 +12,9 @@ class CharacterDetailsModel extends CharacterDetails {
     required super.origin,
     required super.location,
     required super.species,
-     super.type='',
+    required super.type,
     required super.gender,
+    required super.episode,
   });
   factory CharacterDetailsModel.fromJson(Map<String, dynamic> json) =>
       CharacterDetailsModel(
@@ -26,7 +27,7 @@ class CharacterDetailsModel extends CharacterDetails {
         species: json['species'],
         type: json['type'],
         gender: json['gender'],
-
+        episode:json['episode'] ,
       );
 
 }
