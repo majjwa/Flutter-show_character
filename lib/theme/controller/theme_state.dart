@@ -2,10 +2,10 @@ part of 'theme_bloc.dart';
 
 @immutable
 class ThemeState extends Equatable {
-  final ThemeMode? themeMode;
-  const ThemeState({required this.themeMode});
-  const ThemeState.initial() : this(themeMode: ThemeMode.system);
+  final ThemeData? themeData;
+  const ThemeState({required this.themeData});
+
 
   @override
-  List<Object?> get props => [themeMode];
+  List<Object?> get props => [themeData];
 }

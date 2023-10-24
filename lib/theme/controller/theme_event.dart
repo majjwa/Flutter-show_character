@@ -1,13 +1,11 @@
 part of 'theme_bloc.dart';
+ class ThemeEvent extends Equatable {
+   final AppTheme appTheme;
+   ThemeEvent({required  this.appTheme});
 
-@immutable
-abstract class ThemeEvent extends Equatable {
-  const ThemeEvent();
-}
-
-class ThemeModeSwitched extends ThemeEvent {
-  final ThemeMode themeMode;
-  const ThemeModeSwitched({required this.themeMode});
   @override
-  List<Object?> get props => [themeMode];
+
+  List<Object?> get props =>[appTheme];
 }
+
+
