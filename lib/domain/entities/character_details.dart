@@ -40,4 +40,6 @@ class CharacterDetails extends Equatable {
         gender,
         episode,
       ];
+  bool get isAlive => status == 'Alive';
+
 }

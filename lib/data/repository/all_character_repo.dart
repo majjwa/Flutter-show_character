@@ -16,7 +16,6 @@ class AllCharacterRepo extends BaseAllCharacterRepo {
   @override
   Future<CharacterDetails> getAllCharacterDetails(int charcterId) async {
     final result = await baseCharacterRemoteDataSource.getCharacterDetails(charcterId);
-    print(result);
     return result;
   }
 }

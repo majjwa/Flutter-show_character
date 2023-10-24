@@ -3,20 +3,24 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static final appThemeData = {
     Themes.lightTheme: ThemeData(
-      appBarTheme: AppBarTheme(
+      scaffoldBackgroundColor: Colors.white,
+      appBarTheme: const AppBarTheme(
         centerTitle: true,
         foregroundColor: Colors.black,
         backgroundColor: Colors.white,
       ),
+      dividerColor: Colors.grey,
       brightness: Brightness.light,
       colorScheme: ColorScheme.light(
         primary: Colors.purple.shade100,
         secondary: Colors.black,
+
       ),
-      dividerColor: Colors.grey,
     ),
     Themes.darkTheme: ThemeData(
-      appBarTheme: AppBarTheme(
+      cardColor: Colors.cyan,
+      scaffoldBackgroundColor: Colors.black,
+      appBarTheme: const AppBarTheme(
         centerTitle: true,
         foregroundColor: Colors.white,
         backgroundColor: Colors.black,
@@ -26,6 +30,8 @@ class AppTheme {
       colorScheme: ColorScheme.dark(
         primary: Colors.purple.shade800,
         secondary: Colors.white,
+
+
       ),
     ),
   };
