@@ -17,4 +17,6 @@ class Character extends Equatable {
 
   @override
   List<Object?> get props => [id, name, status, image, location];
+  bool get isAlive => status == 'Alive';
+
 }

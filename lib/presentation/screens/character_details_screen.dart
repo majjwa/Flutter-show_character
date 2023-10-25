@@ -169,15 +169,15 @@ class MovieDetailContent extends StatelessWidget {
                           width: 90,
                           height: 100,
                           child: Card(
-                            color: Theme.of(context).colorScheme.primary,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
-                                  18), // Adjust the radius to make it more rounded
+                                  18),
                             ),
                             child: Center(
                               child: Text(
                                 epNum,
                                 style: TextStyle(
+                                  fontSize: 15,
                                   color:
                                       Theme.of(context).colorScheme.secondary,
                                 ),

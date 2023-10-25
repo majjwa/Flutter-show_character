@@ -15,75 +15,47 @@ class AllCharacterScreen extends StatelessWidget {
         return AllCharacterBloc(sl())..add(GetAllCharactersEvent());
       },
       child: Scaffold(
-        body: SingleChildScrollView(
-          key: const Key('ScrollView'),
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20, left: 13),
-              child: Column(
+        extendBodyBehindAppBar: true,
+        body: Stack(
+            children: [
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
+
+
+              ),
+              height: 180,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Rick & Morty",
-                        style: GoogleFonts.aclonica(
-                            textStyle: const TextStyle(fontSize: 35),
-                            color: Theme.of(context).colorScheme.secondary),
-                      ),
-                      const ThemeIcon(),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    width: 320,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                    child: Row(
-                      children: [
-                        const SizedBox(
-                          width: 7,
-                        ),
-                        Icon(
-                          Icons.person,
-                          color: Theme.of(context).colorScheme.secondary,
-                        ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          "All Characters",
-                          style: GoogleFonts.acme(
-                              textStyle: const TextStyle(fontSize: 20),
-                              color: Theme.of(context).colorScheme.secondary),
-                        ),
-                      ],
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20,top: 30),
+                    child: Text(
+                      "Rick & Morty",
+                      style: GoogleFonts.aclonica(
+                          textStyle: const TextStyle(fontSize: 35),
+                          color: Theme.of(context).colorScheme.secondary),
                     ),
                   ),
-                  const SizedBox(
-                    height: 12,
+                  const Padding(
+                    padding: EdgeInsets.only(right: 10,top: 40),
+                    child: ThemeIcon(),
                   ),
-                  SizedBox(
-                      width: 316,
-                      child: Divider(
-                        thickness: 2,
-                        height: 10,
-                        color: Theme.of(context).colorScheme.primary,
-                      )),
-                  const SizedBox(
-                    height: 19,
-                  ),
-                  const CharacterList(),
                 ],
               ),
             ),
           ),
-        ),
+          const Positioned(
+            top: 180,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: CharacterList(),
+          )
+        ]),
       ),
     );
   }

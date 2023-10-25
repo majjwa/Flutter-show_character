@@ -16,7 +16,6 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   void _SwitchMode() {
     on<ThemeEvent>((event, emit) {
       if (event is ThemeEvent) {
-        // Determine the new theme and yield it
         final newTheme =
             state.themeData == AppTheme.appThemeData[Themes.lightTheme]
                 ? AppTheme.appThemeData[Themes.darkTheme]
