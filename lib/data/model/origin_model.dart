@@ -6,13 +6,8 @@ class OriginModel extends Origin {
     super.originUrl,
   });
 
-
-
-  factory OriginModel.fromMap(Map<String, dynamic> json) =>
-      OriginModel(
-          name: json["name"],
-          originUrl: json["url"],
+  factory OriginModel.fromMap(Map<String, dynamic> json) => OriginModel(
+        name: json["name"],
+        originUrl: json["url"],
       );
-
-
 }

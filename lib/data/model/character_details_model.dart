@@ -22,12 +22,11 @@ class CharacterDetailsModel extends CharacterDetails {
         id: json['id'],
         name: json['name'],
         status: json['status'],
-        origin:  OriginModel.fromMap(json["origin"]),
+        origin: OriginModel.fromMap(json["origin"]),
         location: LocationModel.fromMap(json["location"]),
         species: json['species'],
         type: json['type'],
         gender: json['gender'],
-        episode:json['episode'] ,
+        episode: json['episode'],
       );
-
 }

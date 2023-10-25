@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:show_character_app/core/app_constant.dart';
 import 'package:show_character_app/presentation/controller/character_details_bloc.dart';
-
 import '../../core/service_locator.dart';
 
 class CharacterDetailsScreen extends StatelessWidget {
@@ -20,16 +19,20 @@ class CharacterDetailsScreen extends StatelessWidget {
         return sl<CharacterDetailsBloc>()
           ..add(GetCharacterDetailsEvent(characterId));
       },
-      child: const Scaffold(
-        body: MovieDetailContent(),
+      child: Scaffold(
+        body: MovieDetailContent(
+          characterId: characterId,
+        ),
       ),
     );
   }
 }
 
 class MovieDetailContent extends StatelessWidget {
+  final int? characterId;
   const MovieDetailContent({
     Key? key,
+    required this.characterId,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -52,10 +55,14 @@ class MovieDetailContent extends StatelessWidget {
                 flexibleSpace: FlexibleSpaceBar(
                   background: FadeIn(
                     duration: const Duration(milliseconds: 500),
-                    child: CachedNetworkImage(
-                      width: MediaQuery.of(context).size.width,
-                      imageUrl: AppConstant.imageUrl(state.characterDetail!.id),
-                      fit: BoxFit.cover,
+                    child: Hero(
+                      tag: 'character_image_$characterId',
+                      child: CachedNetworkImage(
+                        width: MediaQuery.of(context).size.width,
+                        imageUrl:
+                            AppConstant.imageUrl(state.characterDetail!.id),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
@@ -170,8 +177,7 @@ class MovieDetailContent extends StatelessWidget {
                           height: 100,
                           child: Card(
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  18),
+                              borderRadius: BorderRadius.circular(18),
                             ),
                             child: Center(
                               child: Text(

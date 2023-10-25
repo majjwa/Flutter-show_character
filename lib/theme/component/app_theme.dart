@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import '../../core/enum.dart';
 
 class AppTheme {
   static final appThemeData = {
+
     Themes.lightTheme: ThemeData(
-      cardColor: Colors.grey.shade200,
-      scaffoldBackgroundColor: Colors.white,
+      colorScheme: ColorScheme.light(
+        primary: Colors.purple.shade100,
+        secondary: Colors.black,
+      ),
       appBarTheme: const AppBarTheme(
         centerTitle: true,
         foregroundColor: Colors.black,
@@ -12,17 +16,15 @@ class AppTheme {
       ),
       dividerColor: Colors.grey,
       brightness: Brightness.light,
-      colorScheme: ColorScheme.light(
-        primary: Colors.purple.shade100,
-        secondary: Colors.black,
-
-
-      ),
+      cardColor: Colors.grey.shade200,
+      scaffoldBackgroundColor: Colors.white,
     ),
-    Themes.darkTheme: ThemeData(
 
-      cardColor: Colors.grey.shade600,
-      scaffoldBackgroundColor: Colors.black,
+    Themes.darkTheme: ThemeData(
+      colorScheme: ColorScheme.dark(
+        primary: Colors.purple.shade800,
+        secondary: Colors.white,
+      ),
       appBarTheme: const AppBarTheme(
         centerTitle: true,
         foregroundColor: Colors.white,
@@ -30,18 +32,8 @@ class AppTheme {
       ),
       dividerColor: Colors.grey.shade100,
       brightness: Brightness.dark,
-      colorScheme: ColorScheme.dark(
-        primary: Colors.purple.shade800,
-        secondary: Colors.white,
-
-
-
-      ),
+      cardColor: Colors.grey.shade600,
+      scaffoldBackgroundColor: Colors.black,
     ),
   };
-}
-
-enum Themes {
-  lightTheme,
-  darkTheme,
 }

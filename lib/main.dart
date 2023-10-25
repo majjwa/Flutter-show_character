@@ -4,7 +4,7 @@ import 'package:show_character_app/presentation/screens/all_character_screen.dar
 import 'package:show_character_app/theme/controller/theme_bloc.dart';
 import 'core/service_locator.dart';
 
-void main() async {
+void main(){
   WidgetsFlutterBinding.ensureInitialized();
   ServiceLocator().init();
   runApp(const MyApp());
@@ -18,12 +18,11 @@ class MyApp extends StatelessWidget {
       create: (context) => ThemeBloc(),
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (BuildContext context, ThemeState state) {
-          ThemeData? themeData=state.themeData;
+          ThemeData? themeData = state.themeData;
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'Flutter Demo',
             theme: themeData,
-            home:  AllCharacterScreen(),
+            home: const AllCharacterScreen(),
           );
         },
       ),
