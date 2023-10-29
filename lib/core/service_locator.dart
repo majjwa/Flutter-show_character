@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:show_character_app/data/remote_data_source/character_remote_data_source.dart';
+import 'package:show_character_app/data/data_source/remote_data_source/character_remote_data_source.dart';
 import 'package:show_character_app/data/repository/all_character_repo.dart';
 import 'package:show_character_app/domain/repository/base_all_character_repo.dart';
 import 'package:show_character_app/domain/usecases/get_all_character_usecase.dart';

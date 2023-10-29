@@ -8,11 +8,14 @@ import '../component/all_character_list.dart';
 
 class AllCharacterScreen extends StatelessWidget {
   const AllCharacterScreen({super.key});
+
+
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) {
-        return AllCharacterBloc(sl())..add(GetAllCharactersEvent());
+        return AllCharacterBloc(sl())..add(GetAllCharactersEvent(page: 1));
       },
       child: Scaffold(
         body: Stack(children: [

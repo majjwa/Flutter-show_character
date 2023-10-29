@@ -15,17 +15,28 @@ class AllCharacterBloc extends Bloc<AllCharacterEvent, AllCharacterState> {
       : super(const AllCharacterState()) {
     on<GetAllCharactersEvent>(_getAllCharacter);
   }
+  Future<void> _getAllCharacter(GetAllCharactersEvent event, Emitter<AllCharacterState> emit) async {
+    try {
+      final result = await getAllCharacterUseCases(page: event.page);
 
-  FutureOr<void> _getAllCharacter(
-      GetAllCharactersEvent event, Emitter<AllCharacterState> emit) async {
-    final result = await getAllCharacterUseCases();
-    emit(state.copyWith(
-        character: result,
-        state: CharacterState.loaded
+      final List<Character> updatedCharacters = List.of(state.character)..addAll(result);
 
-    ));
-
+      emit(state.copyWith(
+        character: updatedCharacters,
+        state: CharacterState.loaded,
+      ));
+    } catch (e) {}
   }
+  // FutureOr<void> _getAllCharacter(
+  //     GetAllCharactersEvent event, Emitter<AllCharacterState> emit) async {
+  //   final result = await getAllCharacterUseCases(page: 1);
+  //   emit(state.copyWith(
+  //       character: result,
+  //       state: CharacterState.loaded
+  //
+  //   ));
+  //
+  // }
 
 
 }

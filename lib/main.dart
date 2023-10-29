@@ -8,10 +8,12 @@ void main(){
   WidgetsFlutterBinding.ensureInitialized();
   ServiceLocator().init();
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: themeData,
-            home: const AllCharacterScreen(),
+            home:AllCharacterScreen(),
           );
         },
       ),

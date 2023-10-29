@@ -1,6 +1,6 @@
 class AppConstant {
-  static const String allCharacter="https://rickandmortyapi.com/api/character";
-  static String characterDetail (int id)=>'$allCharacter/$id';
-  static String imageUrl(int path)=> '$allCharacter/avatar/$path.jpeg';
-
+  static String baseUrl = 'https://rickandmortyapi.com/api/character';
+  static String allCharacter(int page) => '$baseUrl/?page=$page';
+  static String characterDetail(int id) => '$baseUrl/$id';
+  static String imageUrl(int path) => '$baseUrl/avatar/$path.jpeg';
 }

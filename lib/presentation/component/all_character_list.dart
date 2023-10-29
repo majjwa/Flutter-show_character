@@ -6,7 +6,6 @@ import 'package:show_character_app/core/enum.dart';
 
 class CharacterList extends StatelessWidget {
   const CharacterList({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AllCharacterBloc, AllCharacterState>(
@@ -17,7 +16,7 @@ class CharacterList extends StatelessWidget {
             return const Center(
                 child: CircularProgressIndicator(color: Colors.purple,));
           case CharacterState.loaded:
-            return const CharacterListLoaded();
+            return  CharacterListLoaded(page: 1,);
           case CharacterState.error:
             return Container();
         }

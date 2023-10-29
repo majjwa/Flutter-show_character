@@ -1,20 +1,40 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:show_character_app/core/app_constant.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:shimmer/shimmer.dart';
-import '../../core/app_constant.dart';
+
 import '../controller/all_character_bloc.dart';
 import '../screens/character_details_screen.dart';
 
-class CharacterListLoaded extends StatelessWidget {
-  const CharacterListLoaded({Key? key}) : super(key: key);
+class CharacterListLoaded extends StatefulWidget {
+  final int page;
+  const CharacterListLoaded({super.key, required this.page});
+
+  @override
+  _CharacterListLoadedState createState() => _CharacterListLoadedState(page);
+}
+
+class _CharacterListLoadedState extends State<CharacterListLoaded> {
+  final ScrollController scrollController = ScrollController();
+  final int page;
+  _CharacterListLoadedState(this.page);
+
+  @override
+  void initState() {
+    super.initState();
+    scrollController.addListener(_scrollListener);
+    // Load initial data
+    context.read<AllCharacterBloc>().add(GetAllCharactersEvent(page: page));
+  }
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AllCharacterBloc, AllCharacterState>(
         buildWhen: (previous, current) => previous.state != current.state,
         builder: (BuildContext context, state) {
           return CustomScrollView(
+           controller: scrollController,
             key: const Key('CharacterScrollView'),
             slivers: [
               SliverToBoxAdapter(
@@ -26,6 +46,7 @@ class CharacterListLoaded extends StatelessWidget {
                         width: 330,
                         height: 60,
                         decoration: BoxDecoration(
+
                           borderRadius: BorderRadius.circular(10),
                           color: Theme.of(context).colorScheme.primary,
                         ),
@@ -169,4 +190,14 @@ class CharacterListLoaded extends StatelessWidget {
           );
         });
   }
+
+  void _scrollListener() {
+    if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+      context.read<AllCharacterBloc>().add(GetAllCharactersEvent(page: page+1));
+      print('Reached the end of the page. Loading more characters for page $page');
+
+    }
+  }
+
 }
+

@@ -8,6 +8,7 @@ class Character extends Equatable {
   final String image;
   final Location location;
 
+
   const Character(
       {required this.id,
       required this.name,
