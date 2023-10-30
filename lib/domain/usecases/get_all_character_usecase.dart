@@ -5,7 +5,8 @@ class GetAllCharacterUseCases {
   final BaseAllCharacterRepo baseAllCharacterRepo;
   GetAllCharacterUseCases(this.baseAllCharacterRepo);
 
-  Future<List<Character>> call({required int page}) async {
-    return await baseAllCharacterRepo.getAllCharacter(page:page);
+  Future<List<Character>> call(int page) async {
+
+    return await baseAllCharacterRepo.getAllCharacter(page);
   }
 }

@@ -4,38 +4,34 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:show_character_app/core/app_constant.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:shimmer/shimmer.dart';
-
 import '../controller/all_character_bloc.dart';
 import '../screens/character_details_screen.dart';
 
 class CharacterListLoaded extends StatefulWidget {
-  final int page;
-  const CharacterListLoaded({super.key, required this.page});
-
+  const CharacterListLoaded({super.key});
   @override
-  _CharacterListLoadedState createState() => _CharacterListLoadedState(page);
+  CharacterListLoadedState createState() => CharacterListLoadedState();
 }
 
-class _CharacterListLoadedState extends State<CharacterListLoaded> {
+class CharacterListLoadedState extends State<CharacterListLoaded> {
+  CharacterListLoadedState();
   final ScrollController scrollController = ScrollController();
-  final int page;
-  _CharacterListLoadedState(this.page);
 
   @override
   void initState() {
     super.initState();
     scrollController.addListener(_scrollListener);
-    // Load initial data
-    context.read<AllCharacterBloc>().add(GetAllCharactersEvent(page: page));
+    context.read<AllCharacterBloc>().add(GetAllCharactersEvent());
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AllCharacterBloc, AllCharacterState>(
         buildWhen: (previous, current) => previous.state != current.state,
         builder: (BuildContext context, state) {
           return CustomScrollView(
-           controller: scrollController,
-            key: const Key('CharacterScrollView'),
+            controller: scrollController,
+             key: const Key('CharacterScrollView'),
             slivers: [
               SliverToBoxAdapter(
                 child: Padding(
@@ -46,7 +42,6 @@ class _CharacterListLoadedState extends State<CharacterListLoaded> {
                         width: 330,
                         height: 60,
                         decoration: BoxDecoration(
-
                           borderRadius: BorderRadius.circular(10),
                           color: Theme.of(context).colorScheme.primary,
                         ),
@@ -107,11 +102,12 @@ class _CharacterListLoadedState extends State<CharacterListLoaded> {
                                   );
                                 },
                                 child: Hero(
-                                  tag:'character_image_${character.id}',
+                                  tag: 'character_image_${character.id}',
                                   child: CachedNetworkImage(
                                     width: 120.0,
                                     fit: BoxFit.cover,
-                                    imageUrl: AppConstant.imageUrl(character.id),
+                                    imageUrl:
+                                        AppConstant.imageUrl(character.id),
                                     placeholder: (context, url) {
                                       return Shimmer.fromColors(
                                         baseColor: Colors.grey[850]!,
@@ -184,20 +180,16 @@ class _CharacterListLoadedState extends State<CharacterListLoaded> {
                     );
                   },
                   childCount: state.character.length,
+
                 ),
               ),
             ],
           );
         });
   }
-
   void _scrollListener() {
-    if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
-      context.read<AllCharacterBloc>().add(GetAllCharactersEvent(page: page+1));
-      print('Reached the end of the page. Loading more characters for page $page');
-
+    if (scrollController.position.pixels >= (scrollController.position.maxScrollExtent - 200)) {
+      context.read<AllCharacterBloc>().add(const GetAllCharactersEvent());
     }
   }
-
 }
-

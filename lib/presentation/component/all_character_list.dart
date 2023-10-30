@@ -14,9 +14,9 @@ class CharacterList extends StatelessWidget {
         switch (state.state) {
           case CharacterState.loading:
             return const Center(
-                child: CircularProgressIndicator(color: Colors.purple,));
+                child: CircularProgressIndicator(color: Colors.purple));
           case CharacterState.loaded:
-            return  CharacterListLoaded(page: 1,);
+            return  const CharacterListLoaded();
           case CharacterState.error:
             return Container();
         }

@@ -4,13 +4,14 @@ import 'package:show_character_app/data/model/character_details_model.dart';
 import 'package:show_character_app/core/app_constant.dart';
 
 abstract class BaseCharacterRemoteDataSource {
-  Future<List<AllCharacterModel>> getAllCharacter({required int page});
+  Future<List<AllCharacterModel>> getAllCharacter(int page);
   Future<CharacterDetailsModel> getCharacterDetails(int characterId);
 }
 
 class CharacterRemoteDataSource extends BaseCharacterRemoteDataSource {
+
   @override
-  Future<List<AllCharacterModel>> getAllCharacter({required int page}) async {
+  Future<List<AllCharacterModel>> getAllCharacter(int page) async {
     final response = await Dio().get(AppConstant.allCharacter(page));
     if (response.statusCode == 200) {
       return List<AllCharacterModel>.from((response.data["results"] as List)

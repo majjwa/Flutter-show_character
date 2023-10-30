@@ -8,9 +8,9 @@ class AllCharacterRepo extends BaseAllCharacterRepo {
   AllCharacterRepo(this.baseCharacterRemoteDataSource);
 
   @override
-  Future<List<Character>> getAllCharacter({required int page}) async {
+  Future<List<Character>> getAllCharacter(int page) async {
     final result =
-                await baseCharacterRemoteDataSource.getAllCharacter(page:page);
+                await baseCharacterRemoteDataSource.getAllCharacter(page);
     return result;
   }
 

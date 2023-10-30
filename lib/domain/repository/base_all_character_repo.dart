@@ -3,7 +3,7 @@ import '../entities/character_details.dart';
 
 abstract class BaseAllCharacterRepo {
 
-  Future<List<Character>> getAllCharacter({required int page});
+  Future<List<Character>> getAllCharacter(int page);
 
   Future<CharacterDetails> getAllCharacterDetails(int characterId);
 }
