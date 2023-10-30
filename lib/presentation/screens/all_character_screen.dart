@@ -24,6 +24,8 @@ class AllCharacterScreen extends StatelessWidget {
               height: 180,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
+                color:
+                    Theme.of(context).scaffoldBackgroundColor.withOpacity(.9),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

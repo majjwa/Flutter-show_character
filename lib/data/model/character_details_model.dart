@@ -1,6 +1,5 @@
 import 'package:show_character_app/data/model/origin_model.dart';
 import 'package:show_character_app/domain/entities/character_details.dart';
-
 import 'location_model.dart';
 
 class CharacterDetailsModel extends CharacterDetails {

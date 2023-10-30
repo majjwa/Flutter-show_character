@@ -21,17 +21,18 @@ class CharacterListLoadedState extends State<CharacterListLoaded> {
   void initState() {
     super.initState();
     scrollController.addListener(_scrollListener);
-    context.read<AllCharacterBloc>().add(GetAllCharactersEvent());
+    context.read<AllCharacterBloc>().add(const GetAllCharactersEvent());
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AllCharacterBloc, AllCharacterState>(
-        buildWhen: (previous, current) => previous.state != current.state,
+        buildWhen: (previous, current) =>
+            previous.character != current.character,
         builder: (BuildContext context, state) {
           return CustomScrollView(
             controller: scrollController,
-             key: const Key('CharacterScrollView'),
+            key: const Key('CharacterScrollView'),
             slivers: [
               SliverToBoxAdapter(
                 child: Padding(
@@ -104,6 +105,7 @@ class CharacterListLoadedState extends State<CharacterListLoaded> {
                                 child: Hero(
                                   tag: 'character_image_${character.id}',
                                   child: CachedNetworkImage(
+                                    height: 140.0,
                                     width: 120.0,
                                     fit: BoxFit.cover,
                                     imageUrl:
@@ -180,15 +182,17 @@ class CharacterListLoadedState extends State<CharacterListLoaded> {
                     );
                   },
                   childCount: state.character.length,
-
                 ),
               ),
             ],
           );
         });
   }
+
   void _scrollListener() {
-    if (scrollController.position.pixels >= (scrollController.position.maxScrollExtent - 200)) {
+    const threshold = 200.0;
+    if (scrollController.position.pixels >=
+        scrollController.position.maxScrollExtent - threshold) {
       context.read<AllCharacterBloc>().add(const GetAllCharactersEvent());
     }
   }

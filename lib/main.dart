@@ -4,11 +4,10 @@ import 'package:show_character_app/presentation/screens/all_character_screen.dar
 import 'package:show_character_app/theme/controller/theme_bloc.dart';
 import 'core/service_locator.dart';
 
-void main(){
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   ServiceLocator().init();
   runApp(const MyApp());
-
 }
 
 class MyApp extends StatelessWidget {

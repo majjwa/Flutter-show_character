@@ -7,7 +7,7 @@ class AllCharacterState extends Equatable {
   const AllCharacterState({
     this.character = const [],
     this.state = CharacterState.loading,
-    this.currentPage = 0,
+    this.currentPage = 1,
   });
 
   AllCharacterState copyWith({

@@ -9,7 +9,6 @@ abstract class BaseCharacterRemoteDataSource {
 }
 
 class CharacterRemoteDataSource extends BaseCharacterRemoteDataSource {
-
   @override
   Future<List<AllCharacterModel>> getAllCharacter(int page) async {
     final response = await Dio().get(AppConstant.allCharacter(page));
@@ -20,7 +19,6 @@ class CharacterRemoteDataSource extends BaseCharacterRemoteDataSource {
       throw Exception();
     }
   }
-
 
   @override
   Future<CharacterDetailsModel> getCharacterDetails(int characterId) async {
